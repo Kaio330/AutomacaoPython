@@ -5,8 +5,8 @@ from POO_Automacao import NotaFiscal
 
 class NotaFiscalEmbratel(NotaFiscal):
 
-    def __init__(self, conta, data_emissao, data_vencimento, nota, valor_total, cnpj, tipoConta, rps):
-        super().__init__(conta, data_emissao, data_vencimento, nota, valor_total, cnpj, tipoConta, rps)
+    def __init__(self, conta, data_emissao, data_vencimento, nota, valor_total, cnpj, tipo_conta, rps):
+        super().__init__(conta, data_emissao, data_vencimento, nota, valor_total, cnpj, tipo_conta, rps)
 
 
     @classmethod
