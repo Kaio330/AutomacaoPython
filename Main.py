@@ -20,4 +20,3 @@ dot_index = full_now.index('.')
 now = full_now[:dot_index]
 
 wb.save('Planilha preenchida '+ now +'.xlsx')
-

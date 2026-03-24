@@ -20,8 +20,6 @@ def CriaObjetos(pdf_texto):
         fatura.definirNota(NotaFiscalEmbratel)
         return fatura.adicionarValores(pdf_texto)
 
-
-
     return NotaFiscalEmbratel('', '', '', '', '', '', '','')
 
 def extrair_texto(filepath):

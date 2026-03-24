@@ -2,7 +2,7 @@ import os
 
 class NotaFiscal:
     def __init__(self, conta, data_emissao, data_vencimento, nota, valor_total, cnpj,
-                 tipo_conta, rps):
+                 tipo_conta):
         self.conta = conta
         self.data_emissao = data_emissao
         self.data_vencimento = data_vencimento
@@ -10,7 +10,6 @@ class NotaFiscal:
         self.cnpj = cnpj
         self.valor_total = valor_total
         self.tipoConta = tipo_conta
-        self.rps = rps
 
     def adicionarValores(self, pdf_texto):
         pass
@@ -84,11 +83,13 @@ class NotaFiscal:
         else :
             ws['G{}'.format(last_empty_line)] = None
 
-        if self.rps:
-            rps = self.rps
-            ws['H{}'.format(last_empty_line)] = rps
-        else:
-            ws['H{}'.format(last_empty_line)] = None
+
+        if hasattr(self, 'rps'):
+            if self.rps:
+                rps = self.rps
+                ws['H{}'.format(last_empty_line)] = rps
+            else:
+                ws['H{}'.format(last_empty_line)] = None
 
 class Estrategia:
     def __init__(self, pdf_texto, estrategia: NotaFiscal):
@@ -101,10 +102,3 @@ class Estrategia:
     def adicionarValores(self, pdf_texto):
         self.pdf_texto = pdf_texto
         return self.estrategia.adicionarValores(pdf_texto)
-
-
-
-
-
-
-

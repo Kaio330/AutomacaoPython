@@ -2,15 +2,15 @@ import re
 from POO_Automacao import NotaFiscal
 
 class NotaFiscalVivo(NotaFiscal):
-    def __init__(self,conta, data_emissao, data_vencimento, nota, valor_total, cnpj, tipo_conta, rps):
-        super().__init__(conta, data_emissao, data_vencimento, nota, valor_total, cnpj, tipo_conta,rps)
+    def __init__(self,conta, data_emissao, data_vencimento, nota, valor_total, cnpj, tipo_conta):
+        super().__init__(conta, data_emissao, data_vencimento, nota, valor_total, cnpj, tipo_conta)
 
 
     @classmethod
     def adicionarValores(cls, pdf_texto):
 
         regex_conta = r'(?:CÓDIGO DO CLIENTE|Número da Conta|Conta)[:]?\s*(\d{10,15})'
-        regex_emissao = r'(?:DATA DE EMISSÃO:\s*|\BAIRRO\s*[:]?\s*\w+\s*\w+?|BAIRRO\s*\w+[:]\w+[.]?\s*\w+\s*\w+?)\s*(\d{2}/\d{2}/\d{4})'
+        regex_emissao = r'(?:DATA DE EMISSÃO:\s*|\BAIRRO\s*[:]?\s*\w+\s*\w+?|BAIRRO\s*\w+[:]\w+[.]?\s*\w+\s*\w+\?s*\w+?)\s*(\d{2}/\d{2}/\d{4})'
         regex_vencimento = r'(?i)Vencimento\s*(\d{2}/\d{2}/\d{4}|\d:\d\s*/\d{2}/\d{4})|(\d{2}/\d{2}/\d{4})\s+\d{1,3}(?:\.\d{3})*,\d{2}'
         regex_fatura = r'Nº NFCOM (\d+)'
         regex_valor = r'(?:TOTAL A PAGAR|\d+[-]\d+) (\d+[\.,]?\d+[\.,]\d{1,2}|0,00)'
@@ -34,6 +34,6 @@ class NotaFiscalVivo(NotaFiscal):
         valor_total = match_valor.group(1) if match_valor else None
         cnpj = match_cnpj.group(1) if match_cnpj else None
         TipoConta = match_TipoConta.group(1) if match_TipoConta else None
-        rps = ''
 
-        return cls(conta, data_emissao, data_vencimento, nota, valor_total, cnpj, TipoConta,rps)
+
+        return cls(conta, data_emissao, data_vencimento, nota, valor_total, cnpj, TipoConta)
