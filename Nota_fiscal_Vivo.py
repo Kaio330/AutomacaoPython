@@ -10,7 +10,7 @@ class NotaFiscalVivo(NotaFiscal):
     def adicionarValores(cls, pdf_texto):
 
         regex_conta = r'(?:CÓDIGO DO CLIENTE|Número da Conta|Conta)[:]?\s*(\d{10,15})'
-        regex_emissao = r'(?:DATA DE EMISSÃO:\s*|\BAIRRO\s*[:]?\s*\w+\s*\w+?|BAIRRO\s*\w+[:]\w+[.]?\s*\w+\s*\w+\?s*\w+?)\s*(\d{2}/\d{2}/\d{4})'
+        regex_emissao = r'(?:DATA DE EMISSÃO:\s*|\BAIRRO\s*[:]?\s*\w+\s*\w+?|BAIRRO\s*\w+[:]\w+[.]?\s*\w+\s*\w+\s*\w+?)\s*(\d{2}/\d{2}/\d{4})'
         regex_vencimento = r'(?i)Vencimento\s*(\d{2}/\d{2}/\d{4}|\d:\d\s*/\d{2}/\d{4})|(\d{2}/\d{2}/\d{4})\s+\d{1,3}(?:\.\d{3})*,\d{2}'
         regex_fatura = r'Nº NFCOM (\d+)'
         regex_valor = r'(?:TOTAL A PAGAR|\d+[-]\d+) (\d+[\.,]?\d+[\.,]\d{1,2}|0,00)'
