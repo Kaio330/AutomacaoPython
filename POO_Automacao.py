@@ -1,15 +1,13 @@
 import os
 
 class NotaFiscal:
-    def __init__(self, conta, data_emissao, data_vencimento, nota, valor_total, cnpj,
-                 tipo_conta):
+    def __init__(self, conta, data_emissao, data_vencimento, nota, valor_total, cnpj):
         self.conta = conta
         self.data_emissao = data_emissao
         self.data_vencimento = data_vencimento
         self.nota = nota
         self.cnpj = cnpj
         self.valor_total = valor_total
-        self.tipoConta = tipo_conta
 
     def adicionarValores(self, pdf_texto):
         pass
@@ -77,11 +75,12 @@ class NotaFiscal:
         else :
             ws['F{}'.format(last_empty_line)] = None
 
-        if self.tipoConta:
-            TipoConta = self.tipoConta
-            ws['G{}'.format(last_empty_line)] = TipoConta
-        else :
-            ws['G{}'.format(last_empty_line)] = None
+        if hasattr(self, 'tipo_conta'):
+            if self.tipo_conta:
+                TipoConta = self.tipo_conta
+                ws['G{}'.format(last_empty_line)] = TipoConta
+            else :
+                ws['G{}'.format(last_empty_line)] = None
 
 
         if hasattr(self, 'rps'):

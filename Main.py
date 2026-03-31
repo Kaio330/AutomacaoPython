@@ -3,20 +3,27 @@ from datetime import datetime
 from openpyxl import Workbook
 from CriaObjetos import CriaObjetos, extrair_texto
 
-directory = 'Pdfs'
-files = os.listdir(directory)
-files_quantity = len(files)
 
-wb = Workbook()
+def main():
+    wb = Workbook()
+    ws = wb.active
+    directory = 'Pdfs'
+    files = os.listdir(directory)
+    files_quantity = len(files)
 
-for file in files:
-    pdf_texto = extrair_texto(directory + '/' + file)
-    nota = CriaObjetos(pdf_texto)
-    nota.adicionarExcel(wb)
-    del nota
+    wb = Workbook()
 
-full_now = str(datetime.now()).replace(':', '_')
-dot_index = full_now.index('.')
-now = full_now[:dot_index]
+    for file in files:
+        pdf_texto = extrair_texto(directory + '/' + file)
+        nota = CriaObjetos(pdf_texto)
+        nota.adicionarExcel(wb)
+        del nota
 
-wb.save('Planilha preenchida '+ now +'.xlsx')
+    full_now = str(datetime.now()).replace(':', '_')
+    dot_index = full_now.index('.')
+    now = full_now[:dot_index]
+
+    wb.save('Planilha preenchida '+ now +'.xlsx')
+
+if __name__ == '__main__':
+    main()

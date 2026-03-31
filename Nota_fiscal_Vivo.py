@@ -2,8 +2,8 @@ import re
 from POO_Automacao import NotaFiscal
 
 class NotaFiscalVivo(NotaFiscal):
-    def __init__(self,conta, data_emissao, data_vencimento, nota, valor_total, cnpj, tipo_conta):
-        super().__init__(conta, data_emissao, data_vencimento, nota, valor_total, cnpj, tipo_conta)
+    def __init__(self,conta, data_emissao, data_vencimento, nota, valor_total, cnpj):
+        super().__init__(conta, data_emissao, data_vencimento, nota, valor_total, cnpj)
 
 
     @classmethod
@@ -15,7 +15,6 @@ class NotaFiscalVivo(NotaFiscal):
         regex_fatura = r'Nº NFCOM (\d+)'
         regex_valor = r'(?:TOTAL A PAGAR|\d+[-]\d+) (\d+[\.,]\d+?[\.,]?\d{1,2}|0,00)'
         regex_cnpj = r'(?i)CNPJ Matriz\s*:\s*(\d{2}\.\d{3}\.\d{3}/\d{4}-\d{2})'
-        regex_TipoConta = r'SERVICO GESTAO (\w+\s*\w+)'
 
 
         match_conta = re.search(regex_conta, pdf_texto)
@@ -24,7 +23,6 @@ class NotaFiscalVivo(NotaFiscal):
         match_fatura = re.search(regex_fatura, pdf_texto)
         match_valor = re.search(regex_valor, pdf_texto)
         match_cnpj = re.search(regex_cnpj, pdf_texto)
-        match_TipoConta = re.search(regex_TipoConta, pdf_texto)
 
 
         conta = match_conta.group(1) if match_conta else None
@@ -33,7 +31,6 @@ class NotaFiscalVivo(NotaFiscal):
         nota = match_fatura.group(1) if match_fatura else None
         valor_total = match_valor.group(1) if match_valor else None
         cnpj = match_cnpj.group(1) if match_cnpj else None
-        TipoConta = match_TipoConta.group(1) if match_TipoConta else None
 
 
-        return cls(conta.replace(' ',''), data_emissao.replace('o','').replace(':', '').replace(' ', ''), data_vencimento, nota, valor_total, cnpj, TipoConta)
+        return cls(conta.replace(' ',''), data_emissao.replace('o','').replace(':', '').replace(' ', ''), data_vencimento, nota, valor_total, cnpj)

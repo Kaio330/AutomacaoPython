@@ -4,8 +4,9 @@ from POO_Automacao import NotaFiscal
 class NotaFiscalEmbratel(NotaFiscal):
 
     def __init__(self, conta, data_emissao, data_vencimento, nota, valor_total, cnpj, tipo_conta, rps):
-        super().__init__(conta, data_emissao, data_vencimento, nota, valor_total, cnpj, tipo_conta)
+        super().__init__(conta, data_emissao, data_vencimento, nota, valor_total, cnpj)
         self.rps = rps
+        self.tipo_conta = tipo_conta
 
 
     @classmethod
@@ -37,20 +38,16 @@ class NotaFiscalEmbratel(NotaFiscal):
         valor_total = match_valor.group(1) if match_valor else None
         cnpj = match_cnpj.group(1) if match_cnpj else None
         TipoConta = match_TipoConta.group(1) if match_TipoConta else None
+        rps = ""
 
 
-        if len(match_rps) == 2:
-            rps = match_rps[0] +'_'+ match_rps[1]
+        for i in range(len(match_rps)):
+            if len(match_rps) >= 1:
+                rps += match_rps[i] + '_'
+            else:
+                rps = None
 
-        elif len(match_rps) == 3:
-            rps = match_rps[0] + '_' + match_rps[1] + '_' + match_rps[2]
-
-        elif len(match_rps) == 1:
-            rps = match_rps[0]
-
-        else:
-            rps = None
-
+        rps = rps[:-1]
         contaJunta = conta + TipoConta
 
 
