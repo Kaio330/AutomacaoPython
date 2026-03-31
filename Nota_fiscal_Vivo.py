@@ -13,7 +13,7 @@ class NotaFiscalVivo(NotaFiscal):
         regex_emissao = r'(?:DATA DE EMISSÃO:\s*|Data de[^:]*?|\BAIRRO\s*[:]?\s*\w+\s*\w+?|BAIRRO\s*\w+[:]\w+[.]?\s*\w+\s*\w+?\s*\w+?)\s*(\d{2}/\d{2}/\d{4}|(\d+)[^:]*:/?\s*(\d{2}/\d{4}))'
         regex_vencimento = r'(?i)Vencimento\s*(\d{2}/\d{2}/\d{4}|\d:\d\s*/\d{2}/\d{4})|(\d{2}/\d{2}/\d{4})\s+\d{1,3}(?:\.\d{3})*,\d{2}'
         regex_fatura = r'Nº NFCOM (\d+)'
-        regex_valor = r'(?:TOTAL A PAGAR|\d+[-]\d+) (\d+[\.,]\d+?[\.,]?\d{1,2}|0,00)'
+        regex_valor = r'(?:TOTAL A PAGAR|\d+[-]\d+) (\d+[\.,]\d+?[\.,]\d{1,2}|\d+[\.,]\d+?[\.,]?\d{1,2}|0,00)'
         regex_cnpj = r'(?i)CNPJ Matriz\s*:\s*(\d{2}\.\d{3}\.\d{3}/\d{4}-\d{2})'
 
 
