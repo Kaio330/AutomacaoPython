@@ -16,7 +16,7 @@ class NotaFiscalEmbratel(NotaFiscal):
         regex_emissao = r'(?:DATA EMISSÃO|Data de Emissão)\s*:\s*(\d{2}/\d{2}/\d{4})'
         regex_vencimento = r'(\d{2}/\d{2}/\d{4})'
         regex_fatura = r'Nº da Fatura\s*:\s*\d{2}/\d{2}/((\d{8})[-](\d{1}))'
-        regex_valor = r'(\d+[\.,]?\d+[\.,]\d{1,2})'
+        regex_valor = r'(\d+[\.,]\d+?[\.,]\d{1,2}|\d+[\.,]\d+?[\.,]?\d{1,2}|0,00)'
         regex_cnpj = r'(\d{2}\.\d{3}\.\d{3}/\d{4}-\d{2})'
         regex_TipoConta = r'(\w{3,5}) -\w+\s*\w+\s*\w+\s*\w+\s*[\w+\s*\]?d+[\.,]?\d+[\.,]\d{1,2}'
         regex_rps = r'NÚMERO\s*:\s*(\d{6})'
