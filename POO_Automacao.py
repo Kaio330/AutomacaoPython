@@ -1,5 +1,7 @@
 import os
 
+
+
 class NotaFiscal:
     def __init__(self, conta, data_emissao, data_vencimento, nota, valor_total, cnpj):
         self.conta = conta
