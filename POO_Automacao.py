@@ -1,7 +1,5 @@
 import os
 
-
-
 class NotaFiscal:
     def __init__(self, conta, data_emissao, data_vencimento, nota, valor_total, cnpj):
         self.conta = conta
@@ -16,7 +14,8 @@ class NotaFiscal:
         return
 
     def adicionarExcel(self, wb):
-
+        
+        os.chdir(os.path.dirname(os.path.realpath(__file__)))
         directory = 'Pdfs'
         files = os.listdir(directory)
         files_quantity = len(files)
