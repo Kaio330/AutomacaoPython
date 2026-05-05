@@ -2,7 +2,7 @@ import re
 from POO_Automacao import NotaFiscal
 
 class NotaFiscalAlgar(NotaFiscal):
-    def __init__(self,conta, data_emissao, data_vencimento, nota, valor_total, cnpj):
+    def __init__(self,conta, data_emissao, data_vencimento, nota, valor_total, cnpj, rps):
         super().__init__(conta, data_emissao, data_vencimento, nota, valor_total, cnpj)
         self.rps = rps
     
