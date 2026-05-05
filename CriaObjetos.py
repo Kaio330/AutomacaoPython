@@ -12,17 +12,17 @@ def CriaObjetos(pdf_texto):
     
         cnpjOperadora = match_cnpj.group(1)
 
-        if cnpjOperadora == '02.558.157/0001-62':
+        if cnpjOperadora.__contains__('02.558.157/0001-62'):
             fatura = Estrategia(pdf_texto, NotaFiscal)
             fatura.definirNota(NotaFiscalVivo)
             return fatura.adicionarValores(pdf_texto)
         
-        if cnpjOperadora == '05.872.814/0001-30' or '05.872.814/0007-25':
+        elif cnpjOperadora.__contains__('05.872.814/0001-30' or '05.872.814/0007-25'):
             fatura = Estrategia(pdf_texto, NotaFiscal)
             fatura.definirNota(NotaFiscalAlgar)
             return fatura.adicionarValores(pdf_texto)
 
-        if cnpjOperadora == '40.432.544/0001-47' or '02.667.694/0001-40':
+        elif cnpjOperadora.__contains__('40.432.544/0001-47' or '02.667.694/0001-40'):
             fatura = Estrategia(pdf_texto, NotaFiscal)
             fatura.definirNota(NotaFiscalEmbratel)
             return fatura.adicionarValores(pdf_texto)
